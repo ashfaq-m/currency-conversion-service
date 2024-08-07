@@ -1,10 +1,8 @@
 package com.demo.microservices.currencyconversionservice.controller;
 
 import com.demo.microservices.currencyconversionservice.entity.CurrencyConversion;
-<<<<<<< HEAD
-=======
 import com.demo.microservices.currencyconversionservice.proxy.CurrencyConversionProxy;
->>>>>>> dev
+
 import lombok.AllArgsConstructor;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
@@ -25,8 +23,7 @@ import java.util.Objects;
 public class CurrencyConversionController {
 
     private final Environment environment;
-<<<<<<< HEAD
-=======
+
     private final CurrencyConversionProxy proxy;
 
     @GetMapping("feign/from/{from}/to/{to}/quantity/{quantity}")
@@ -38,8 +35,10 @@ public class CurrencyConversionController {
 
         CurrencyConversion currencyConversion = proxy.retrieveExchangeValue(from, to);
 
-//        String port = environment.getProperty("local.server.port");
-//        Objects.requireNonNull(currencyConversion).setEnvironment(port);
+/*
+        String port = environment.getProperty("local.server.port");
+        Objects.requireNonNull(currencyConversion).setEnvironment(port);
+*/
 
 
         return new CurrencyConversion(
@@ -52,7 +51,6 @@ public class CurrencyConversionController {
                 currencyConversion.getEnvironment()
         );
     }
->>>>>>> dev
 
     @GetMapping("from/{from}/to/{to}/quantity/{quantity}")
     public CurrencyConversion calculateCurrencyConversion(
